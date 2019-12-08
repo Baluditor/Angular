@@ -1,3 +1,5 @@
+import { PointModule } from "./PointModule";
+
 let a: number;
 let b: boolean;
 let c: any;
@@ -14,9 +16,9 @@ let backgroundColor = Color.Blue;
 //! TYPE ASSERTION
 let message2: string | number;
 message2 = 'abc';
-let endWithC = (<string>message2).endsWith('c');
-let alternativeWay = (message2 as string).endsWith('c');
-(message2 as string).endsWith('c');
+//let endWithC = (<string>message2).endsWith('c');
+//let alternativeWay = (message2 as string).endsWith('c');
+//(message2 as string).endsWith('c');
 
 
 //! ARROW FUCNTION / LAMBDA EXPRESSION
@@ -62,7 +64,7 @@ drawCicle({a:1,b:2,},{r:5})
 
 //! CLASSES
 
-class Point {
+class PointClass {
     a: number;
     b: number;
     r: number;
@@ -71,9 +73,70 @@ class Point {
     }
 }
 
-point2 = new Point();
+let point2 = new PointClass();
 
 point2.a = 5;
 point2.b = 6;
 point2.r = 8;
 point2.draw()
+
+//! CONSTRUCTOR
+
+class PointConstructor {
+    a: number;
+    b: number;
+    r: number;
+
+    constructor(a: number, b:number, r:number){ //You can make the parameters optional with a ? => note that after the first ? all the others right from that must be ? as well
+        this.a = a;
+        this.b = b;
+        this.r = r;
+    }
+}
+
+let pointClass = new PointConstructor(1,2,3)
+
+class PointConstructorOptional {
+    x: number;
+    y: number;
+    
+    constructor(x?: number, y?:number){
+        this.x = x;
+        this.y = y;
+    }
+}
+
+let pointConstructorOptional = new PointConstructorOptional() // => No need for the optional parameters
+
+
+class PointConstructorPrefix {
+    constructor(private x?: number, private y?: number){ // here we would need to specify public modifier!!!
+    }   
+}
+
+//! PROPERTIES
+class PointProperties{
+    constructor(private _x?: number, private _y?: number){
+    }
+    get x(){
+        return this._x
+    }
+
+    set x(value){
+        if (value < 0){
+            throw Error('Value can not be less then 0.')
+        }
+        this._x = value;
+    }
+}
+
+let pointProperties = new PointProperties(123,1421)
+let pointPropertiesX = pointProperties.x;
+console.log(pointPropertiesX)
+pointProperties.x = 2;
+pointPropertiesX = pointProperties.x; // => need to be set the update value
+console.log(pointPropertiesX)
+
+//let pointModuleVariable = new PointModule();
+
+let pm = new PointModule(1,2);
