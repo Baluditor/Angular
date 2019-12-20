@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoursesServices } from './courses.service';
+import { CoursesService } from './courses.service';
 @Component({
     selector: 'courses', // <div calss="courses"> ".courses"
     template: `
@@ -18,8 +18,7 @@ export class CoursesComponent {
         // return this.title;
     // }
 
-    constructor(){
-        let service = new CoursesServices();
+    constructor(service: CoursesService) {
         this.courses = service.getCourses();
     }
 }
