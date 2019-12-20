@@ -5,8 +5,23 @@ export class Human{
     public set hairColor(value: string) {
         this._hair.color = value;
     }
-    public set hairLength(value: number){
+    public set hairLength(value: string){
         this._hair.lenght = value;
+    }
+    public get hairLenght(){
+        return this._hair.lenght
+    }
+    public get eyeColor(){
+        return this._eyes.color
+    }
+    public set eyeColor(value: string){
+        this._eyes.color = value;
+    }
+    public get eyeType(){
+        return this._eyes.type;
+    }
+    public set eyeType(value: string){
+        this._eyes.type = value;
     }
     public get weight(): number {
         return this._weight;
@@ -32,15 +47,13 @@ export class Human{
         private _weight: number,
         private _hair: Hair,
         private _eyes: Eye,
-
     ){
-
     }
 }
 
 interface Hair{
     color: string,
-    lenght: number
+    lenght: string
 }
 
 interface Eye{
