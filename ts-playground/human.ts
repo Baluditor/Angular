@@ -5,6 +5,9 @@ export class Human{
     public set hairColor(value: string) {
         this._hair.color = value;
     }
+    public set hairLength(value: number){
+        this._hair.lenght = value;
+    }
     public get weight(): number {
         return this._weight;
     }
@@ -37,7 +40,7 @@ export class Human{
 
 interface Hair{
     color: string,
-    lenght: string
+    lenght: number
 }
 
 interface Eye{
